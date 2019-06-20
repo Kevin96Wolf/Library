@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <!-- this refresh the books once a book is inserted-->
+      <app-add-book (refreshBooks)="refreshBooks($event)"></app-add-book>
+    </div>
+    <div class="col-sm-6 prueba">
+      <!-- refresh the books foir each "refreshBooks"-->
+      <!-- booksFind is just to refresh the pagination as well-->
+      <app-show-modify-book [books]="books"
+                            [booksFind]="books"
+
+                           ></app-show-modify-book>
+    </div>
+  </div>
+</div>

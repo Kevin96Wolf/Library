@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <!-- For each insert pass new list of categories  show-mod -->
+      <app-add-category (refreshCategory)="refreshCategory($event)"></app-add-category>
+    </div>
+    <div class="col-sm-6">
+      <!-- Before of each "refreshCategory" this update the list -->
+      <app-show-modify-category [categories]="categories"></app-show-modify-category>
+    </div>
+  </div>
+</div>

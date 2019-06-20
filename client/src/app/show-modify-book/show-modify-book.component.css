@@ -1,0 +1,89 @@
+.adjustRow {
+  margin-bottom: 20px;
+  border-bottom: 2px solid black;
+  padding-bottom: 8px;
+}
+
+.titleBook {
+  font-weight: bold;
+}
+
+/*This are modal requirements*/
+.modalChild {
+  height: 1000px;
+  position: sticky;
+}
+
+.modalContentChild {
+  background: rgba(0, 0, 0, 0.55);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  z-index: 130;
+  top: 0;
+  left: 0;
+  padding-top: 5%;
+  padding-right: 17px;
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.closeModal {
+  background: rgb(255, 255, 255);
+  font-size: 30px;
+  font-weight: bold;
+  text-align: right;
+  cursor: pointer;
+}
+
+.titleModal {
+  background: white;
+}
+
+.fix {
+  position: absolute;
+}
+
+.adjustModal {
+  z-index: 1500;
+}
+
+/*Fix problems with images bootrap*/
+.bookSize {
+  height: 400px;
+}
+
+.imageAdjust {
+  width: 100%;
+  min-height: 350px;
+  min-width: 120px;
+  max-height: 275px;
+  max-width: 200px;
+}
+
+.image {
+  width: 100%;
+  min-height: 350px;
+  min-width: 120px;
+  max-height: 275px;
+  max-width: 200px;
+}

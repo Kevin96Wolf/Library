@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <!--Refresh all users-->
+      <app-add-user (newUser)=newUser($event)></app-add-user>
+    </div>
+    <!--Refresh all users befire newUser is called,booksFind refresh the paginated-->
+    <div class="col-sm-6 prueba">
+      <app-show-modify-user [users]="users" [booksFind]="users"></app-show-modify-user>
+    </div>
+  </div>
+</div>

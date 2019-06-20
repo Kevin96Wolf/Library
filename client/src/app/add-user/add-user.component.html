@@ -1,0 +1,91 @@
+<!--This save update state book , make user and make uder whith borrowing-->
+<div *ngIf="bookCategory.state == 0  " class="container">
+  <div class="row">
+    <!--If book is free you can borrow of creater usr and borrow-->
+    <div class="col-12" *ngIf="(this.router.url == '/add-book') || (this.router.url == '/show-book')">
+      <p>Existent user</p>
+      <div class="form-group">
+        <p>Select an user</p>
+        <form class="example-form">
+          <mat-form-field class="example-full-width ">
+            <input type="text" placeholder="pick" aria-label="Number" name="modify" matInput [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="value">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+        <input type="submit" class="btn btn-primary" (click)="borrow()" value="Borrow" />
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 mx-auto shadow-lg p-4 mb-4 bg-white ejemplo ">
+      <form [formGroup]="validator" (submit)="register()" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <div class="form-group">
+            <div class="titleCategory">
+              <p>New user</p>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <p>Name</p>
+            <input formControlName="name" required type="text" class="form-control" placeholder="Introduce" value="" name="agregar" [(ngModel)]="user.name" />
+          </div>
+
+          <div class="form-group">
+
+            <p>Email</p>
+            <input formControlName="email" required type="text" class="form-control" placeholder="Introduce" value="" name="author" [(ngModel)]="user.email" />
+          </div>
+          <div class="form-group">
+
+            <p>Cellphone</p>
+            <input formControlName="cellphone" required type="text" class="form-control" placeholder="Introduce" value="" name="author" [(ngModel)]="user.cellphone" />
+          </div>
+
+          <div class="form-group">
+            <!--Add user and borrow or just create-->
+            <input *ngIf="(this.router.url == '/add-book') || (this.router.url == '/show-book')" [disabled]="validator.invalid" type="submit" class="btn btn-primary" value="New user & borrow" />
+            <input *ngIf="(this.router.url == '/add-user')" [disabled]="validator.invalid" type="submit" class="btn btn-primary" value="create" />
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+</div>
+<!--Return the book-->
+<div *ngIf="bookCategory.state == 1" class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <h2>Book borrowed by:</h2>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 infoBasic">
+              <h3>Name:</h3>
+              {{bookCategory.users[0].name}}
+            </div>
+            <div class="col-md-12 infoBasic">
+              <h3>Cellphone:</h3>
+              {{bookCategory.users[0].cellphone}}
+            </div>
+            <div class="col-md-12 infoBasic">
+              <h2>Email:</h2>
+              {{bookCategory.users[0].email}}
+            </div>
+          </div>
+        </div>
+        <input type="submit" class="btn btn-primary" (click)="returned()" value="Return" />
+      </div>
+    </div>
+  </div>
+</div>

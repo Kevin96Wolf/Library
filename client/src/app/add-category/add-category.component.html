@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mx-auto shadow-lg p-4 mb-4 bg-white">
+      <form [formGroup]="validator" (submit)="register()">
+
+        <div class="form-group">
+          <div class="form-group">
+            <div class="titleCategory">
+              <p>Add category</p>
+            </div>
+            <div class="sugguest">Add a new category</div>
+          </div>
+          <div class="form-group">
+            <p>Name</p>
+            <input formControlName="name" required type="text" class="form-control" placeholder="Introduce" value="" name="agregar" [(ngModel)]="category.name" />
+          </div>
+          <div class="form-group">
+            <p>Name</p>
+
+
+            <textarea formControlName="description" required class="form-control" placeholder="Introduce" [(ngModel)]="category.description" name="comenario" rows="8"> </textarea>
+          </div>
+
+
+          <div class="form-group">
+            <input [disabled]="validator.invalid" type="submit" class="btn btn-primary" value="Agregar" />
+
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

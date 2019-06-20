@@ -1,0 +1,103 @@
+<!-- Menu --->
+<header>
+
+  <div class="titlePage">
+    <h1>Library</h1>
+    <p *ngIf="nav" class="icon-times hideResponsive" (click)="nav=false "> Close menu</p>
+    <p *ngIf="!nav" class="icon-bars hideResponsive" (click)="nav=true"> Open menu</p>
+  </div>
+  <!-- Option menu --->
+  <nav *ngIf="nav">
+    <ul>
+      <li>
+        <!-- Any option active corresponding submenu for each option --->
+        <div (click)="option(1) " class="option">
+          <a class="icon-bookmark text-center"> Category</a>
+        </div>
+        <div (mouseover)="hover=true" (mouseleave)="hover=false" [ngStyle]="{display: hover==true  ? '' : 'none' }">
+          <div *ngIf="submenu" class="submenu">
+            <div class="container">
+              <div class="row fill">
+                <div routerLink="/add-category" class="col-md-6 adjustSubMenu" (click)="nav=false">
+                  <p class="icon-plus"> Add category</p>
+                </div>
+                <div routerLink="/add-category" class="col-md-6 adjustSubMenu" (click)="nav=false">
+                  <p class="icon-plus"> Modify category</p>
+                </div>
+
+                <div class="col-md-4 adjustSubMenu icon-arrow-left hideResponsive" (click)="submenu=false">
+                  <a href="">Return</a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </li>
+      <li>
+        <div (click)="option(2) " class="option">
+          <a class="icon-book text-center "> Book</a>
+        </div>
+
+        <div (mouseover)="hover2=true" (mouseleave)="hover2=false" [ngStyle]="{display: hover2==true  ? '' : 'none' }">
+          <div *ngIf="submenu2" class="submenu">
+            <div class="container">
+              <div class="row fill">
+                <div class="col-md-4 adjustSubMenu">
+                  <p class="icon-plus" routerLink="/add-book" (click)="nav=false"> Add Book</p>
+                </div>
+                <div class="col-md-4 adjustSubMenu">
+                  <p class="icon-plus" routerLink="/add-book" (click)="nav=false"> Modify Book</p>
+                </div>
+                <div class="col-md-4 adjustSubMenu" routerLink="/show-user" (click)="nav=false">
+                  <p class="icon-male"> Book borrowed</p>
+                </div>
+
+                <div class="col-md-4 adjustSubMenu icon-arrow-left hideResponsive" (click)="submenu=false2">
+                  <a href="">Return</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </li>
+      <li>
+        <div (click)="option(3) " class="option">
+          <a class="icon-user text-center "> Users</a>
+        </div>
+        <div (mouseover)="hover3=true" (mouseleave)="hover3=false" [ngStyle]="{display: hover3==true  ? '' : 'none' }">
+          <div *ngIf="submenu3" class="submenu">
+            <div class="container">
+              <div class="row fill">
+                <div class="col-md-4 adjustSubMenu" routerLink="/add-user" (click)="nav=false">
+                  <p class="icon-plus"> Add User</p>
+                </div>
+                <div class="col-md-4 adjustSubMenu" routerLink="/add-user" (click)="nav=false">
+                  <p class="icon-plus"> Modify User</p>
+                </div>
+                <div class="col-md-4 adjustSubMenu" routerLink="/show-user" (click)="nav=false">
+                  <p class="icon-male"> Book User</p>
+                </div>
+                <div class="col-md-4 adjustSubMenu icon-arrow-left hideResponsive" (click)="submenu3=false">
+                  <a href="">Return</a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </li>
+
+
+    </ul>
+  </nav>
+
+
+</header>
+<main>
+  <router-outlet></router-outlet>
+
+</main>

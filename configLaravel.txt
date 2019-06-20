@@ -1,0 +1,9 @@
+#1 migratrions and models
+  php artisan make:model Category -m
+  php artisan make:model Book  -m
+  php artisan make:model LibraryUser -m
+  php artisan make:migration create_book_libraryUser_table
+#2 controllers
+php artisan make:Controller CategoryController 
+php artisan make:Controller BookController  
+php artisan make:Controller LibraryUserController 

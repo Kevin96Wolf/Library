@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="text-center a"> Welcome</h1>
+    </div>
+  </div>
+  <div class="row">
+    <!--Each col-sm-4 represent the options to navigate-->
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Category</h3>
+          <div (mouseover)="hover=true" class="icon-bookmark text-center  " [ngClass]="{optionSelect:hover==true, optionSelectN:hover==false}">
+
+          </div>
+          <div (mouseover)="hover=true" (mouseleave)="hover=false" [ngStyle]="{display: hover==true  ? 'block' : '' }" class="optionSelection">
+
+            <div class="container">
+              <div class="row">
+                <div class="col-2">
+                  <p class="icon-plus iconAdjust"></p>
+                </div>
+                <div class="col-10">
+                  <button type="button" class="btn btn-primary" routerLink="/add-category">Add category</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2">
+                  <p class="icon-pencil-square-o iconAdjust"></p>
+                </div>
+                <div class="col-10">
+                  <button type="button" class="btn btn-primary" routerLink="/add-category">Modify category</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Books</h3>
+          <div (mouseover)="hover2=true" class="icon-book text-center  " [ngClass]="{optionSelect:hover2==true, optionSelectN:hover2==false}">
+
+          </div>
+          <div (mouseover)="hover2=true" (mouseleave)="hover2=false" [ngStyle]="{display: hover2==true  ? 'block' : '' }" class="optionSelection">
+
+            <div class="container">
+              <div class="row">
+                <div class="col-2">
+                  <p class="icon-plus iconAdjust"></p>
+                </div>
+                <div class="col-10">
+                  <button type="button" class="btn btn-primary" routerLink="/add-book">Add Book</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2">
+                  <p class="icon-pencil-square-o iconAdjust"></p>
+                </div>
+                <div class="col-10">
+                  <button type="button" class="btn btn-primary" routerLink="/add-book"> Modify Book</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2">
+                  <p class="icon-male iconAdjust"></p>
+                </div>
+                <div class="col-10">
+                  <button type="button" class="btn btn-primary" routerLink="/show-user">Borrowed</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title"> Users</h3>
+          <div (mouseover)="hover3=true" class="icon-user text-center  " [ngClass]="{optionSelect:hover3==true, optionSelectN:hover3==false}">
+
+          </div>
+          <div (mouseover)="hover3=true" (mouseleave)="hover3=false" [ngStyle]="{display: hover3==true  ? 'block' : '' }" class="optionSelection">
+
+            <div class="container">
+              <div class="row">
+                <div class="col-2">
+                  <p class="icon-plus iconAdjust"></p>
+                </div>
+                <div class="col-10">
+                  <button type="button" class="btn btn-primary" routerLink="/add-user">Add User</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2">
+                  <p class="icon-pencil-square-o iconAdjust"></p>
+                </div>
+                <div class="col-10">
+                  <button type="button" class="btn btn-primary" routerLink="/add-user">Modify User</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2">
+                  <p class="icon-male iconAdjust"></p>
+                </div>
+                <div class="col-10">
+                  <button type="button" class="btn btn-primary" routerLink="/show-user">Borrowed</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

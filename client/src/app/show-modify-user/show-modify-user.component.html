@@ -1,0 +1,213 @@
+<!--Filter to find user-->
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <p>Filter by name</p>
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input type="text" placeholder="write" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+
+      </div>
+    </div>
+
+
+  </div>
+  <div class="col-md-12 mx-auto shadow-lg p-4 mb-4 bg-white">
+
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="row adjustRow">
+          <div class="col-4">
+            <h6>Information</h6>
+          </div>
+          <div class="col-4">
+            <h6>Eliminate</h6>
+          </div>
+          <div class="col-4">
+            <h6>Modify</h6>
+          </div>
+
+        </div>
+      </div>
+      <!--Paginated users-->
+      <div *ngFor="let item of booksFind | paginate: { itemsPerPage: 5, currentPage: p }" class="col-sm-12">
+        <div class="row adjustRow">
+
+          <div class="col-sm-6 col-md-4  word-break">
+            <div class="row">
+              <div class="col-12">
+                <div class="titleBook">
+                  Name:
+                </div>
+                {{item.name}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="titleBook">
+                  Email:
+                </div>
+                {{item.email}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="titleBook">
+                  Cellphone:
+                </div>
+                {{item.cellphone}}
+              </div>
+            </div>
+            <div *ngIf="item.books.length ==0 " class="row">
+              <div class="col-12">
+                <div class="titleBook backRed">
+                  <p>Books: NO</p>
+                </div>
+
+              </div>
+            </div>
+            <div *ngIf="item.books.length >=1 " class="row">
+              <div class="col-12">
+                <div class="titleBook backGreen  ">
+                  Books:
+                  YES
+                </div>
+
+
+
+              </div>
+            </div>
+
+
+          </div>
+          <div class="col-sm-6 col-md-4 word-break"><button type="button" class="btn btn-danger " (click)="delete(item)">Eliminate</button></div>
+          <div class="col-sm-6 col-md-4 word-break"><button [disabled]="item.books.length==0" type="button" class="btn btn-success" (click)="modalData(item)" data-toggle="modal" data-target="#exampleModal">Modify</button></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!modal" class="">
+
+
+  <div class="container">
+
+
+    <!-- The Modal for each user with borrowed books -->
+    <div class="modalContentChild " [ngStyle]="{display: modal==true  ? 'none' : '' }">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 closeModal icon-times" (click)="closeModal()">
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 titleModal">
+            <div class="" style="background=white;">
+              <h2>Modify book borrowed</h2>
+            </div>
+            <div class="row">
+              <div class="col-md-12 mx-auto shadow-lg p-4 mb-4 bg-white">
+
+
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="row adjustRow">
+                      <div class="col-4">
+                        <h6>Information</h6>
+                      </div>
+                      <div class="col-4">
+                        <h6>Returned</h6>
+                      </div>
+                      <div class="col-4">
+                        <h6></h6>
+                      </div>
+
+                    </div>
+                  </div>
+                  <!--necessary to solve problems win paginated tables-->
+                  <div *ngFor="let item of modalUser.books | paginate: { itemsPerPage: 3, currentPage: p2 }" class="col-sm-12">
+                    <div class="row adjustRow">
+
+                      <div class="col-sm-6 col-md-4  word-break">
+                        <div class="row">
+                          <div class="col-12">
+                            <div class=" imageAdjust">
+                              <img class=" image " src="{{item.urlImage}}" alt="">
+                            </div>
+
+                          </div>
+
+                          <div class="col-12">
+                            <div class="titleBook">
+                              Name:
+                            </div>
+                            {{item.name}}
+                          </div>
+                          <div class="col-12">
+                            <div class="titleBook">
+                              Author:
+                            </div>
+                            {{item.author}}
+                          </div>
+                          <div class="col-12">
+                            <div class="titleBook">
+                              Publish date:
+                            </div>
+                            {{item.publishDate}}
+                          </div>
+                          <div class="col-12">
+                            <div class="titleBook">
+                              Category:
+                            </div>
+                            {{item.category.name}}
+                          </div>
+                        </div>
+
+
+
+
+
+
+                      </div>
+                      <div class="col-sm-6 col-md-4 word-break"><button type="button" class="btn btn-danger " (click)="returned(item)">Returned</button></div>
+
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <pagination-controls (pageChange)="p2 = $event"></pagination-controls>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

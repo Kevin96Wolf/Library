@@ -1,0 +1,88 @@
+<div class="container">
+  <!--This row has theo col , frist col represents basic add-book it can be used to modify -->
+  <!--The second represents -->
+
+  <div class="row">
+    <!--ngclass  to adjust the size if teh componet will be for insert o update -->
+
+    <div [ngClass]="{'col-md-12':enableModal==0}" class="col-md-6 mx-auto shadow-lg p-4 mb-4 bg-white ejemplo ">
+      <form [formGroup]="validator" (submit)="register()" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <div class="form-group">
+            <div class="titleCategory">
+              <p>Add book</p>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <img class="image" src="{{url}}" alt="">
+            <p *ngIf="bookCategory.id==0">Selec an image</p>
+            <input *ngIf="bookCategory.id==0" class="form-control" type="file" #imageInput name="image" (change)="processFile(imageInput)" formControlName="image">
+
+          </div>
+          <div class="form-group">
+            <p>Name</p>
+            <input formControlName="name" required type="text" class="form-control" placeholder="Introduce" value="" name="agregar" [(ngModel)]="bookCategory.name" />
+          </div>
+          <div class="form-group">
+            <p>Description</p>
+            <form class="example-form">
+              <mat-form-field class="example-full-width ">
+                <input type="text" placeholder="{{modalCategory.name}}" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </form>
+
+          </div>
+          <div class="form-group">
+
+            <p>Author</p>
+            <input formControlName="author" required type="text" class="form-control" placeholder="Introduce" value="" name="author" [(ngModel)]="bookCategory.author" />
+          </div>
+
+          <div class="form-group">
+            <form class="form-inline">
+              <div class="form-group">
+                <div class="input-group">
+                  <input [minDate]="{year: 1910, month: 1, day: 1}" [maxDate]="{year: 2048, month: 12, day: 31}" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker">
+
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+
+          </div>
+          <div *ngIf="bookCategory.users.length >=1 && enableModal==1" class="form-group">
+            <p> User:{{bookCategory.users[0].name}}</p>
+          </div>
+
+          <div *ngIf="modal==1 && bookCategory.users.length >= 1" class="form-group">
+            <p>User: {{bookCategory.users[0].name}}</p>
+          </div>
+          <div class="form-group">
+
+            <input *ngIf="bookCategory.id==0" [disabled]="validator.invalid" type="submit" class="btn btn-primary" value="Add" />
+            <input *ngIf="bookCategory.id>=1" type="button" (click)="register()" class="btn btn-primary" value="Modify" />
+
+
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+    <!--If modal is opened the add-user gonna work as create user and borrow and return book-->
+    <div [ngStyle]="{display: enableModal==1  ? '' : 'none' }" class="col-md-6 mx-auto shadow-lg p-4 mb-4 bg-white ejemplo">
+      <!--state change literay refresh books and the input pass the book to add-user-->
+      <app-add-user [bookCategory]="bookCategory" (stateChange)="stateChange($event)"></app-add-user>
+    </div>
+  </div>
+</div>

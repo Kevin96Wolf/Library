@@ -1,0 +1,150 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <p>Filter by name</p>
+        <!--This is the filter -->
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input type="text" placeholder="write" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+
+      </div>
+    </div>
+
+
+  </div>
+  <!--This is paginated table -->
+  <div class="col-md-12 mx-auto shadow-lg p-4 mb-4 bg-white">
+
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="row adjustRow">
+          <div class="col-3">
+            <h6>Image</h6>
+          </div>
+          <div class="col-3">
+            <h6>Description</h6>
+          </div>
+          <div class="col-3">
+            <h6>Eliminate</h6>
+          </div>
+          <div class="col-3">
+            <h6>Modify</h6>
+          </div>
+        </div>
+      </div>
+
+      <div *ngFor="let item of booksFind | paginate: { itemsPerPage: 3, currentPage: p }" class="col-sm-12">
+        <div class="row adjustRow">
+          <div class="col-sm-6 col-md-3  word-break">
+            <img class="img-thumbnail image" src="{{item.urlImage}}" alt="">
+          </div>
+          <div class="col-sm-6 col-md-3  word-break">
+            <div class="row">
+              <div class="col-12">
+                <div class="titleBook">
+                  Name:
+                </div>
+                {{item.name}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="titleBook">
+                  Author:
+
+                </div>
+                {{item.author}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="titleBook">
+                  Publish date:
+                </div>
+                {{item.publishDate}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="titleBook">
+                  Category:
+                </div>
+                {{item.category.name}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="titleBook">
+                  Aviable:
+                </div>
+                <div *ngIf="item.state==1" [ngStyle]="{background: 'rgba(219, 15, 15, 0.59)' }">No</div>
+                <p *ngIf="item.state==0" [ngStyle]="{background: 'rgba(15, 219, 72, 0.59)' }">Yes</p>
+              </div>
+            </div>
+            <div *ngIf="item.state==1 && item.users.length >= 1" class="row">
+              <div class="col-12">
+                <div class="titleBook">
+                  User: {{item.users[0].name}}
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-sm-6 col-md-3 word-break"><button type="button" class="btn btn-danger " (click)="delete(item)">Eliminate</button></div>
+          <!-- Pass each book to Modal ,Modal pass tdo add user and add book-->
+          <div class="col-sm-6 col-md-3 word-break"><button type="button" class="btn btn-success" (click)="modalData(item)" data-toggle="modal" data-target="#exampleModal">Modify</button></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+  <!-- The Modal it was nessary make my own Modal I had problems with Angular material-->
+  <div class="container">
+
+    <div class="modalContentChild " [ngStyle]="{display: modal==true  ? 'none' : '' }">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 closeModal icon-times" (click)="closeModal()">
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 titleModal">
+            <div class="" style="background=white;">
+              <h2>Modify book</h2>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div>
+        <!--This compoenet is used to communicate book,add-book,show-mod-book -->
+        <!--Add book is using add-user both are working as update -->
+        <!--Variabes represent a book with all porpeties  -->
+        <app-add-book [url]="modalUrl" [bookCategory]="bookCategory" [modalCategory]="modalCategory" [enableModal]="enableModal" [date]="date"></app-add-book>
+
+      </div>
+
+    </div>
+
+  </div>
