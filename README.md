@@ -9,7 +9,7 @@ y Angular `BackEnd`.`
 - [FrontEnd](#frontEnd)
 - [BackEnd](#BackEnd)
 
-## Instalacion
+## Instalación
 ### Laravel
 
 Copia / recupera la carpeta `Library` del repositorio dentro de un servidor(de preferencia local) que soporte php en su version actual y Laravel 5.7,la carpeta `Library` representa el proyecto  Laravel , situala en la carpeta `htdocs` (si se esta trabajando en XAMPP  ) o en su correspondiente herramienta.
