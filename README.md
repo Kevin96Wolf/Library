@@ -2,7 +2,7 @@
 ## Descripción
 Proyecto Library con operaciones básicas http y requisitos de diseño especificos, desarrollado en Laravel  `Backend` + `MysSql` `utilizando ELOQUENT ORM`
 y Angular `BackEnd`.`
-> NOTA: Si se descarga el repositorio la carpeta dentro del rar renonbrarla como `Library` o bien si se descarga via git asegurarse que la carpeta que contiene los archivos sea llamada `Library`.
+> NOTA: Si se descarga el repositorio la carpeta dentro del rar renombrarla como `Library` o bien si se descarga via git asegurarse que la carpeta que contiene los archivos sea llamada `Library`.
 
 ## Contenido
 - [Instalacion](#instalacion)
