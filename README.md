@@ -2,6 +2,8 @@
 ## Descripción
 Proyecto Library con operaciones básicas http y requisitos de diseño especificos, desarrollado en Laravel  `Backend` + `MysSql` `utilizando ELOQUENT ORM`
 y Angular `BackEnd`.`
+> NOTA: Si se descarga el repositorio la carpeta dentro del rar renonbrarla como `Library` o bien si se descarga via git asegurarse que la carpeta que contiene los archivos sea llamada `Library`.
+
 ## Contenido
 - [Instalacion](#instalacion)
 - [FrontEnd](#frontEnd)
@@ -9,6 +11,7 @@ y Angular `BackEnd`.`
 
 ## Instalacion
 ### Laravel
+
 Copia / recupera la carpeta `Library` del repositorio dentro de un servidor(de preferencia local) que soporte php en su version actual y Laravel 5.7,la carpeta `Library` representa el proyecto  Laravel , situala en la carpeta `htdocs` (si se esta trabajando en XAMPP  ) o en su correspondiente herramienta.
 
 `La configuración e importación del esquema de base de datos se encuentra en el apartado BackEnd`
