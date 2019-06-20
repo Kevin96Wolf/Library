@@ -67,7 +67,7 @@ Si el servidor no concuerda con la ruta "http://localhost/Library" en el control
 ```
 # FrontEnd
 Dentro de `/Library/Client` se encuentran los archivos correspondientes al proyecto en angular.
-##Service (Importante)
+## Service (Importante)
 El servicio encargado de realizar las peticiones al servidor Laravel se encuentra definido en `/Library/client/app/services/services.service.ts` cambia la ruta si se esta utilizando un servidor diferente ej:
 http://localhost:8080/Library/public
 ```javascritp
